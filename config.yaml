@@ -1,0 +1,63 @@
+# Echo configuration — every key is optional; defaults live in echo/core/config.py.
+name: Echo
+
+llm:
+  host: http://localhost:11434
+  model: llama3.2:3b        # text + tool calling
+  vision_model: moondream   # "what do you see" / "read this"
+  temperature: 0.4
+  max_tool_steps: 4
+  context_turns: 6
+
+audio:
+  enabled: true
+  mode: push_to_talk        # push_to_talk (Enter / open palm) or wake_word
+  wake_words: ["hey echo", "echo"]
+  stt_model: base.en        # faster-whisper size: tiny.en, base.en, small.en...
+  stt_compute_type: int8
+  silence_threshold: 0.012  # raise in noisy rooms
+  silence_duration_s: 0.9
+
+tts:
+  enabled: true
+  engine: piper             # piper -> pyttsx3 -> text only
+  piper_voice: ~/.echo/voices/en_US-lessac-medium.onnx
+  rate: 175
+
+vision:
+  enabled: true
+  camera_index: 0
+  width: 640
+  height: 480
+  fps: 15
+  ocr_engine: auto          # auto (tesseract if installed, else vision model) | tesseract | llm
+
+gestures:
+  enabled: true
+  model_path: ~/.echo/models/hand_landmarker.task   # auto-downloaded on first run
+  stable_frames: 4
+  cooldown_s: 1.5
+
+mood:
+  enabled: true
+  provider: placeholder     # later: "moodlens.echo_adapter:MoodLensDetector"
+  interval_s: 3.0
+  min_confidence: 0.5
+
+tools:
+  enabled: []               # empty = every tool in echo/tools/
+  disabled: []              # e.g. [web_search] for a fully offline assistant
+  confirm: [open_app]       # ask for a thumbs up / "yes" before running these
+  notes_dir: ~/.echo/notes
+  app_aliases:
+    browser: firefox
+    terminal: gnome-terminal
+    calculator: gnome-calculator
+
+ui:
+  enabled: true
+  refresh_per_second: 8
+
+logging:
+  level: INFO
+  file: ~/.echo/logs/echo.log

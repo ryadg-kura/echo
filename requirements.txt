@@ -1,0 +1,23 @@
+# Core
+pyyaml>=6.0
+rich>=13.7
+httpx>=0.27
+numpy>=1.26
+
+# Tools
+psutil>=5.9
+pypdf>=4.0
+ddgs>=9.0                    # web_search (the only tool that uses the network)
+
+# Voice
+sounddevice>=0.4.6           # needs the PortAudio system library
+faster-whisper>=1.0
+piper-tts>=1.3
+pyttsx3>=2.90                # fallback TTS (uses espeak-ng on Linux)
+
+# Vision
+opencv-contrib-python>=4.9   # mediapipe depends on the contrib build; don't also install opencv-python
+mediapipe>=0.10.14
+
+# Optional: faster, fully deterministic OCR for "read this" (needs the tesseract binary)
+# pytesseract>=0.3.10
