@@ -1,5 +1,7 @@
 # Echo
 
+[![CI](https://github.com/ryadg-kura/echo/actions/workflows/ci.yml/badge.svg)](https://github.com/ryadg-kura/echo/actions/workflows/ci.yml)
+
 **A private, local-first multimodal assistant that listens, sees, and acts on your computer, with nothing leaving your machine.**
 
 <!-- Placeholder: replace docs/demo.gif with a real recording (e.g. `vhs` or `asciinema` + `agg`). -->
@@ -163,7 +165,7 @@ tests/        pytest suite (orchestrator, agent, every tool, perception logic, U
 pip install -r requirements-dev.txt
 pytest                  # hardware-free: LLM, camera, mic and web are faked
 mypy echo --strict
-ruff check echo tests
+ruff check echo tests    # rules live in pyproject.toml
 ```
 
 ## Privacy
